@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block content %}
+<h1 class="h3">Cookie Orders</h1>
+<div class="grid-container">
+    <h2 class="h5">All Orders</h2>
+    <div class="table-wrapper">
+        <table class=" table table-striped table-bordered table-hover ">
+            <thead class="table-primary ">
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Cookie Type</th>
+                    <th>Number of Boxes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order_item in orders %}
+                <tr>
+                    <td hidden>{{ order_item.id }}</td>
+                    <td>{{order_item.customer_name}}</td>
+                    <td>{{order_item.cookie_type}}</td>
+                    <td>{{order_item.boxes}}</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm " href="/cookies/edit/{{ order_item.id }} ">Edit</a>
+                        <a class="btn btn-primary btn-sm " href="/cookies/delete/{{ order_item.id }} ">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a class="btn btn-primary mt-3 " href="/cookies/new ">New Order</a>
+</div> {% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+<div class="form-container">
+    <h1>Create User</h1>
+    <form action="/cookies/create" method="POST">
+        <div class="form-group">
+            <label for="customer_name">Name:</label>
+            <input class="form-control" type="text" name="customer_name"> {% with errors = get_flashed_messages(category_filter=['customer_name']) %} {% if errors %} {% for msg in errors %}
+            <small class="form-text text-danger">{{msg}}.</small> {% endfor %} {% endif %} {% endwith %}
+        </div>
+        <div class="form-group">
+            <label for="cookie_type">Cookie Type:</label>
+            <input class="form-control" type="text" name="cookie_type"> {% with errors = get_flashed_messages(category_filter=['cookie_type']) %} {% if errors %} {% for msg in errors %}
+            <small class="form-text text-danger">{{msg}}.</small> {% endfor %} {% endif %} {% endwith %}
+        </div>
+        <div class="form-group">
+            <label for="boxes">Number of Boxes:</label>
+            <input class="form-control" type="number" name="boxes">{% with errors = get_flashed_messages(category_filter=['boxes']) %} {% if errors %} {% for msg in errors %}
+            <small class="form-text text-danger">{{msg}}.</small> {% endfor %} {% endif %} {% endwith %}
+        </div>
+        <input class="btn btn-primary mt-2" type="submit" value="Add User">
+        <a class="btn btn-primary mt-2" href="/">Home</a>
+    </form>
+</div>
+{% endblock %}
